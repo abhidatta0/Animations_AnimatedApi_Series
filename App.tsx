@@ -3,11 +3,12 @@ import {
   SafeAreaView,
   Text,
 } from 'react-native';
+import SimpleTextMount from './src/components/SimpleTextMount';
 
 const App = () => {
   return (
     <SafeAreaView>
-      <Text>Hello World</Text>
+      <SimpleTextMount />
     </SafeAreaView>
   );
 };
