@@ -6,13 +6,15 @@ import {
 import SimpleTextMount from './src/components/SimpleTextMount';
 import MovingCard from './src/components/MovingCard';
 import SequenceVsParallel from './src/components/SequenceVsParallel';
+import CardColorInterpolate from './src/components/CardColorInterpolate';
 
 const App = () => {
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{flex: 1}}>
       {/* <SimpleTextMount /> */}
       {/* <MovingCard /> */}
-      <SequenceVsParallel />
+      {/* <SequenceVsParallel /> */}
+      <CardColorInterpolate />
     </SafeAreaView>
   );
 };
