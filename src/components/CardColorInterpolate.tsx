@@ -1,16 +1,38 @@
-import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import {Animated, View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import {useRef} from 'react';
 
 const CardColorInterpolate = ()=>{
+    const boxPos = useRef(new Animated.Value(0)).current;
+
     const onStart = ()=> {
-       
+       Animated.timing(boxPos, {
+        toValue: 300,
+        useNativeDriver: true,
+        duration: 5000,
+       }).start();
     }
 
     const onReset = ()=> {
-       
+        Animated.timing(boxPos, {
+            toValue: 0,
+            useNativeDriver: true,
+           }).start();
     }
    return (
     <View style={styles.container}>
-        <View style={[styles.box]} />
+        <Animated.View style={[styles.box, {
+            transform:[
+                {translateX: boxPos}
+            ],
+            backgroundColor: boxPos.interpolate({
+                inputRange:[0, 150, 300],
+                outputRange:['green','blue','yellow']
+            }),
+            opacity:boxPos.interpolate({
+                inputRange:[0, 150, 300],
+                outputRange: [1,0.5, 1]
+            })
+        }]} />
         <View style={styles.btnGroup}>
         <TouchableOpacity style={styles.btn} onPress={onStart}>
             <Text>Start</Text>
