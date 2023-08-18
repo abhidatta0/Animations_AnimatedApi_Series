@@ -7,7 +7,7 @@ const CardColorInterpolate = ()=>{
     const onStart = ()=> {
        Animated.timing(boxPos, {
         toValue: 300,
-        useNativeDriver: true,
+        useNativeDriver: false,
         duration: 5000,
        }).start();
     }
@@ -15,23 +15,24 @@ const CardColorInterpolate = ()=>{
     const onReset = ()=> {
         Animated.timing(boxPos, {
             toValue: 0,
-            useNativeDriver: true,
+            useNativeDriver: false,
            }).start();
     }
    return (
     <View style={styles.container}>
         <Animated.View style={[styles.box, {
-            transform:[
-                {translateX: boxPos}
-            ],
-            backgroundColor: boxPos.interpolate({
+            // transform:[
+            //     {translateX: boxPos}
+            // ],
+            backgroundColor: 'green',
+            // opacity:boxPos.interpolate({
+            //     inputRange:[0, 150, 300],
+            //     outputRange: [1,0.5, 1]
+            // }),
+            width:boxPos.interpolate({
                 inputRange:[0, 150, 300],
-                outputRange:['green','blue','yellow']
+                outputRange: [0, 150, 300]
             }),
-            opacity:boxPos.interpolate({
-                inputRange:[0, 150, 300],
-                outputRange: [1,0.5, 1]
-            })
         }]} />
         <View style={styles.btnGroup}>
         <TouchableOpacity style={styles.btn} onPress={onStart}>
