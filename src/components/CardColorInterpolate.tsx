@@ -1,4 +1,4 @@
-import {Animated, View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import {Animated, View, Text, TouchableOpacity, StyleSheet, Easing} from 'react-native';
 import {useRef} from 'react';
 
 const CardColorInterpolate = ()=>{
@@ -7,7 +7,7 @@ const CardColorInterpolate = ()=>{
     const onStart = ()=> {
        Animated.timing(boxPos, {
         toValue: 300,
-        useNativeDriver: true,
+        useNativeDriver: false,
         duration: 5000,
        }).start();
     }
@@ -15,18 +15,19 @@ const CardColorInterpolate = ()=>{
     const onReset = ()=> {
         Animated.timing(boxPos, {
             toValue: 0,
-            useNativeDriver: true,
+            useNativeDriver: false,
            }).start();
     }
    return (
     <View style={styles.container}>
         <Animated.View style={[styles.box, {
             transform:[
-                {translateX: boxPos},
+                // {translateX: boxPos},
                 {scale: boxPos.interpolate({
                     inputRange: [0, 150],
                     outputRange: [1,3],
-                    extrapolate:'identity',
+                    extrapolate:'clamp',
+                    easing: (t)=> Easing.bounce(t),
                 })}
             ],
             backgroundColor: 'green',
