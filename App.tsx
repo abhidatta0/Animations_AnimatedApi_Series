@@ -7,6 +7,7 @@ import SimpleTextMount from './src/components/SimpleTextMount';
 import MovingCard from './src/components/MovingCard';
 import SequenceVsParallel from './src/components/SequenceVsParallel';
 import CardColorInterpolate from './src/components/CardColorInterpolate';
+import MediumClapButton from './src/components/MediumClapButton';
 
 const App = () => {
   return (
@@ -14,7 +15,8 @@ const App = () => {
       {/* <SimpleTextMount /> */}
       {/* <MovingCard /> */}
       {/* <SequenceVsParallel /> */}
-      <CardColorInterpolate />
+      {/* <CardColorInterpolate /> */}
+      <MediumClapButton maxCountPerUser={50} startCount={12}/>
     </SafeAreaView>
   );
 };
